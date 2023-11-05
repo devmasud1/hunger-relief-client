@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import FeaturedCard from "./FeaturedCard";
 import { Link } from "react-router-dom";
+import UseAxios from "../../../hooks/UseAxios/UseAxios";
 
 const Featured = () => {
   const [featuredFood, setFeaturedFood] = useState([]);
+  const axiosUrl = UseAxios();
 
   useEffect(() => {
-    fetch("/food.json")
-      .then((res) => res.json())
+    axiosUrl
+      .get("/api/v1/foods")
       .then((data) => {
-        setFeaturedFood(data);
+        setFeaturedFood(data.data);
       });
-  }, []);
+  }, [axiosUrl]);
 
   return (
     <div className="w-11/12 mx-auto my-12 lg:my-20">
@@ -20,7 +22,7 @@ const Featured = () => {
       </h1>
       <hr className="w-28 lg:w-40 h-1 bg-red-900 m-auto" />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 my-12">
-        {featuredFood?.map((food, idx) => (
+        {featuredFood?.slice(0, 6).map((food, idx) => (
           <FeaturedCard key={idx} food={food}></FeaturedCard>
         ))}
       </div>

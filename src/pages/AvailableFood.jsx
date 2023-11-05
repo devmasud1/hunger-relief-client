@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import AvailableFoodCard from "./AvailableFoodCard";
+import UseAxios from "../hooks/UseAxios/UseAxios";
 
 const AvailableFood = () => {
   const [availableFood, setAvailableFood] = useState([]);
+  const axiosUrl = UseAxios();
 
   useEffect(() => {
-    fetch("/food.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setAvailableFood(data);
-      });
-  }, []);
+    axiosUrl.get("/api/v1/foods").then((data) => {
+      setAvailableFood(data.data);
+    });
+  }, [axiosUrl]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const AvailableFood = () => {
 
       <div className="w-11/12 mx-auto">
         <div className="card-actions justify-end pt-6">
-          <button className="btn btn-primary">sort by date</button>
+          <button className="btn btn-accent">sort by date</button>
         </div>
         <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 lg:my-14">
           {availableFood?.map((food, idx) => (
