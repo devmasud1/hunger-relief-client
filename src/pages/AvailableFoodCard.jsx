@@ -1,5 +1,4 @@
-
-const FeaturedCard = ({ food }) => {
+const AvailableFoodCard = ({ food }) => {
   const {
     food_image,
     food_name,
@@ -11,13 +10,13 @@ const FeaturedCard = ({ food }) => {
   } = food || {};
 
   return (
-    <div className="card lg:card-side bg-base-100 shadow-xl">
-      <div className="lg:w-1/2">
+    <div className="card lg:flex-col lg:card-side bg-base-100 shadow-xl">
+      <div className="w-full">
         <figure>
-          <img src={food_image} alt="food_image" />
+          <img src={food_image} alt="food_image" className="w-full" />
         </figure>
       </div>
-      <div className="w-full lg:w-1/2">
+      <div className="w-full">
         <div className="card-body">
           <div>
             <h2 className="card-title">{food_name}</h2>
@@ -25,20 +24,23 @@ const FeaturedCard = ({ food }) => {
             <p>Quantity: {food_quantity}</p>
             <p>Expire date: {expired_date}</p>
             <div className="flex justify-between mt-8 items-center">
-              <div className="w-1/2 lg:w-1/2">
+              <div className="w-1/2">
                 <div className="avatar">
                   <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                     <img src={donator.donator_image} className="object-cover" />
                   </div>
                 </div>
-                <h2 className="text-lg font-medium mt-3">
+                <h2 className="text-base lg:text-lg font-medium mt-3">
                   {donator.donator_name}
                 </h2>
               </div>
-              <div className="w-1/2 lg:w-1/2">
-                <p>{pickup_location.address}</p>
-                <p>{pickup_location.hometown}</p>
-                <button className="btn btn-info mt-5 rounded-tl-2xl rounded-br-2xl">View Details</button>
+              <div className="w-1/2">
+                <h1 className="text-lg font-medium">Pickup location:</h1>
+                <h2>{pickup_location.address}</h2>
+                <h2>{pickup_location.hometown}</h2>
+                <div className="card-actions justify-end mt-3">
+                  <button className="btn btn-primary">View Details</button>
+                </div>
               </div>
             </div>
           </div>
@@ -47,5 +49,4 @@ const FeaturedCard = ({ food }) => {
     </div>
   );
 };
-
-export default FeaturedCard;
+export default AvailableFoodCard;
