@@ -1,7 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
+import UseAxios from "../hooks/UseAxios/UseAxios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const FoodDetailsModal = ({ food }) => {
+  const axiosUrl = UseAxios();
 
   const getCurrentDate = () => {
     const currentDate = new Date();
@@ -16,7 +21,6 @@ const FoodDetailsModal = ({ food }) => {
 
   const donarEmail = user?.email;
   const userEmail = user?.email;
-
 
   const handleRequestSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +39,7 @@ const FoodDetailsModal = ({ food }) => {
     const additional_notes = form.additional_notes.value;
     const donation_money = form.donation_money.value;
 
-    console.log(
+    const foodRequest = {
       food_name,
       food_image,
       food_id,
@@ -46,11 +50,19 @@ const FoodDetailsModal = ({ food }) => {
       pickup_location,
       expired_date,
       additional_notes,
-      donation_money
-    );
+      donation_money,
+    };
+
+    axiosUrl.post("/api/v1/food-request", foodRequest).then((res) => {
+      if (res.data.insertedId) {
+        toast("successfully request sent", { type: "success" });
+       
+      }
+    });
   };
   return (
     <dialog id="my_modal_3" className="modal">
+      <ToastContainer />
       <div className="modal-box">
         <form method="dialog">
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
