@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 import { AiFillGoogleCircle } from 'react-icons/ai';
+import { useContext } from "react";
+import { AuthContext } from "../hooks/Provider/AuthProvider";
 
 const Login = () => {
-  const handleGoogleLogIn = () => {};
+    const {GoogleLogIn} = useContext(AuthContext)
+  const handleGoogleLogIn = () => {
+    GoogleLogIn()
+    .then(result =>   {
+            console.log(result)
+        })
+        .catch(err => console.log(err))
+  };
 
   const handleUserLogin = (e) => {
     e.preventDefault();
@@ -16,7 +25,7 @@ const Login = () => {
   return (
     <div>
       <div
-        className="hero h-[68vh]"
+        className="hero min-h-[68vh]"
         style={{ backgroundImage: "url(https://i.ibb.co/NtZwvJq/logIn.jpg)" }}
       >
      

@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
+import { AuthContext } from "../../../hooks/Provider/AuthProvider";
 
 const Navbar = () => {
   const [isNavOpen, setNavOpen] = useState(false);
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleSignOutUser = () => {
+    signOutUser();
+  };
 
   const navToggle = () => {
     setNavOpen(!isNavOpen);
@@ -82,9 +88,36 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">
-            <button className=" btn-neutral py-2 px-4 rounded">Log in</button>
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-8 h-8 rounded-full">
+                  {user.photoURL ? (
+                    <img src={user.photoURL} />
+                  ) : (
+                    <img src="https://i.ibb.co/ZJXnP8s/user.png" />
+                  )}
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] px-2 py-4 shadow bg-base-200 rounded w-52"
+              >
+                <li>
+                  <a className="justify-between">{user.displayName}</a>
+                </li>
+                <li>
+                  <button onClick={handleSignOutUser}>Logout</button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="px-5 py-1 bg-blue-800 text-white rounded-md font-semibold">
+                LogIn
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
