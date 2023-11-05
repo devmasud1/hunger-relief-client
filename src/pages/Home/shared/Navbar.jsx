@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 
@@ -82,7 +82,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className=" btn-neutral py-2 px-4 rounded">Donate</button>
+          <Link to="/login">
+            <button className=" btn-neutral py-2 px-4 rounded">Log in</button>
+          </Link>
         </div>
       </div>
     </div>
