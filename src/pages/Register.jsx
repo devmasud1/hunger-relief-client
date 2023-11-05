@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-    const { createUser, passwordErrMsg } = useContext(AuthContext);
+  const { createUser, passwordErrMsg } = useContext(AuthContext);
   const handleUserRegister = (e) => {
     e.preventDefault();
 
@@ -13,19 +15,20 @@ const Register = () => {
     const imageUrl = e.target.photoUrl.value;
 
     createUser(email, password, name, imageUrl)
-    .then((result) => {
-     console.log(result)
-    })
-    .catch((err) => {
-     console.log(err)
-    });
+      .then(() => {
+        toast("User successfully created!", { type: "success" });
+      })
+      .catch(() => {
+        toast("Already use this email", { type: "error" });
+      });
 
-    // e.target.name.value = "";
-    // e.target.email.value = "";
-    // e.target.password.value = "";
+    e.target.name.value = "";
+    e.target.email.value = "";
+    e.target.password.value = "";
   };
   return (
     <div>
+      <ToastContainer />
       <div
         className="hero min-h-[68vh]"
         style={{
@@ -39,6 +42,9 @@ const Register = () => {
               Sign up now
             </h1>
             <form onSubmit={handleUserRegister} className="card-body">
+              <div className="text-white">
+                {passwordErrMsg ? passwordErrMsg : ""}
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-white text-lg">Name</span>
