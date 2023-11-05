@@ -1,0 +1,87 @@
+[
+    {
+      "food_image": "https://i.ibb.co/RDFD69r/5.jpg",
+      "food_name": "Delicious Spaghetti",
+      "donator": {
+        "donator_image": "https://i.ibb.co/SR9QRHQ/man.jpg",
+        "donator_name": "John Doe"
+      },
+      "food_quantity": 4,
+      "pickup_location": {
+        "address": "123 Main Street, Cityville, USA"
+      },
+      "expired_date": "2023-12-31",
+      "additional_notes": "Contains no nuts. Spicy sauce on the side."
+    },
+    {
+      "food_image": "https://i.ibb.co/RDFD69r/5.jpg",
+      "food_name": "Savory Pizza",
+      "donator": {
+        "donator_image": "https://i.ibb.co/SR9QRHQ/man.jpg",
+        "donator_name": "Jane Smith"
+      },
+      "food_quantity": 2,
+      "pickup_location": {
+        "address": "456 Elm Street, Townsville, USA"
+      },
+      "expired_date": "2023-11-30",
+      "additional_notes": "Vegetarian pizza with extra cheese."
+    },
+    {
+      "food_image": "https://i.ibb.co/RDFD69r/5.jpg",
+      "food_name": "Homemade Lasagna",
+      "donator": {
+        "donator_image": "https://i.ibb.co/SR9QRHQ/man.jpg",
+        "donator_name": "Alice Johnson"
+      },
+      "food_quantity": 6,
+      "pickup_location": {
+        "address": "789 Oak Street, Villagetown, USA"
+      },
+      "expired_date": "2023-12-15",
+      "additional_notes": "Contains dairy. No spicy ingredients."
+    },
+    {
+      "food_image": "https://i.ibb.co/RDFD69r/5.jpg",
+      "food_name": "Fresh Salad",
+      "donator": {
+        "donator_image": "https://i.ibb.co/SR9QRHQ/man.jpg",
+        "donator_name": "Michael Wilson"
+      },
+      "food_quantity": 3,
+      "pickup_location": {
+        "address": "101 Pine Street, Suburbia, USA"
+      },
+      "expired_date": "2023-11-20",
+      "additional_notes": "Mixed greens with balsamic vinaigrette."
+    },
+    {
+      "food_image": "https://i.ibb.co/RDFD69r/5.jpg",
+      "food_name": "Sweet Dessert",
+      "donator": {
+        "donator_image": "https://i.ibb.co/SR9QRHQ/man.jpg",
+        "donator_name": "Emily Brown"
+      },
+      "food_quantity": 5,
+      "pickup_location": {
+        "address": "222 Maple Street, Countryside, USA"
+      },
+      "expired_date": "2023-12-10",
+      "additional_notes": "Homemade chocolate cake with icing."
+    },
+    {
+      "food_image": "https://i.ibb.co/RDFD69r/5.jpg",
+      "food_name": "Spicy Curry",
+      "donator": {
+        "donator_image": "https://i.ibb.co/SR9QRHQ/man.jpg",
+        "donator_name": "David Lee"
+      },
+      "food_quantity": 4,
+      "pickup_location": {
+        "address": "333 Birch Street, Hometown, USA"
+      },
+      "expired_date": "2023-11-25",
+      "additional_notes": "Contains nuts. Very spicy."
+    }
+  ]
+  
