@@ -9,22 +9,29 @@ const Register = () => {
   const handleUserRegister = (e) => {
     e.preventDefault();
 
-    const name = e.target.name.value;
+    
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const imageUrl = e.target.photoUrl.value;
+    const name = e.target.name.value;
+    const imageUrl = e.target.imageUrl.value;
 
     createUser(email, password, name, imageUrl)
-      .then(() => {
-        toast("User successfully created!", { type: "success" });
+    .then(() => {
+        toast("log in success", { type: "success" });
       })
       .catch(() => {
-        toast("Already use this email", { type: "error" });
+        toast("something wrong", { type: "error" });
       });
+    //   .then(() => {
+    //     toast("User successfully created!", { type: "success" })
+    //   })
+    //   .catch(() => {
+    //     toast("Already use this email", { type: "error" })
+    //   })
 
-    e.target.name.value = "";
-    e.target.email.value = "";
-    e.target.password.value = "";
+    // e.target.name.value = "";
+    // e.target.email.value = "";
+    // e.target.password.value = "";
   };
   return (
     <div>
@@ -87,14 +94,14 @@ const Register = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-white text-lg">
-                    Photo Url
+                  imageUrl
                   </span>
                 </label>
                 <input
                   required
                   type="text"
-                  name="photoUrl"
-                  placeholder="Enter you img url"
+                  name="imageUrl"
+                  placeholder="Enter you image url"
                   className="input input-bordered"
                 />
               </div>

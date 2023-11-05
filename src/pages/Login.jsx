@@ -1,16 +1,21 @@
 import { Link } from "react-router-dom";
-import { AiFillGoogleCircle } from 'react-icons/ai';
+import { AiFillGoogleCircle } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-    const {GoogleLogIn} = useContext(AuthContext)
+  const { GoogleLogIn, signInUser } = useContext(AuthContext);
+
   const handleGoogleLogIn = () => {
     GoogleLogIn()
-    .then(result =>   {
-            console.log(result)
-        })
-        .catch(err => console.log(err))
+      .then(() => {
+        toast("log in success", { type: "success" });
+      })
+      .catch(() => {
+        toast("something wrong", { type: "error" });
+      });
   };
 
   const handleUserLogin = (e) => {
@@ -19,21 +24,31 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
-    // e.target.email.value = "";
-    // e.target.password.value = "";
+    signInUser(email, password)
+      .then(() => {
+        toast("log in success", { type: "success" });
+      })
+      .catch(() => {
+        toast("something wrong", { type: "error" });
+      });
+
+    e.target.email.value = "";
+    e.target.password.value = "";
   };
   return (
     <div>
+      <ToastContainer />
       <div
         className="hero min-h-[68vh]"
         style={{ backgroundImage: "url(https://i.ibb.co/NtZwvJq/logIn.jpg)" }}
       >
-     
         <div className="hero-overlay bg-opacity-95"></div>
         <div className="hero-content">
           <div className="w-full border-2 border-blue-200">
-            <h1 className="text-center mt-5 text-white text-xl font-semibold">Log in</h1>
-            
+            <h1 className="text-center mt-5 text-white text-xl font-semibold">
+              Log in
+            </h1>
+
             <form onSubmit={handleUserLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -69,7 +84,7 @@ const Login = () => {
                   onClick={handleGoogleLogIn}
                   className="btn btn-neutral w-full"
                 >
-                    <AiFillGoogleCircle className="text-2xl"/>
+                  <AiFillGoogleCircle className="text-2xl" />
                   Log in with google
                 </button>
               </div>
