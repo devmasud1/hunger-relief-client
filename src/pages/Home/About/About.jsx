@@ -2,7 +2,10 @@ const About = () => {
   return (
     <div className="w-11/12 mx-auto my-16">
       <div className="lg:w-3/4 text-center mx-auto">
-        <h1 className="text-2xl lg:text-4xl font-bold">How You Can Help</h1>
+        <h1 className="text-2xl lg:text-4xl font-bold mb-3">
+          How You Can Help
+        </h1>
+        <hr className="w-28 lg:w-40 h-1 bg-red-900 m-auto" />
         <p className="mt-6 mb-10 lg:w-3/4 lg:mx-auto">
           Your support is essential in our mission to create a better world.
           Explore the ways you can make a difference through financial
