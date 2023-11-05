@@ -7,6 +7,7 @@ import AvailableFood from "../pages/AvailableFood";
 import AddFood from "../pages/AddFood";
 import ManageFood from "../pages/ManageFood";
 import FoodRequest from "../pages/FoodRequest";
+import FoodDetails from "../pages/FoodDetails";
 
 const Routes = createBrowserRouter([
   {
@@ -32,6 +33,11 @@ const Routes = createBrowserRouter([
       {
         path:"/food-request",
         element: <FoodRequest/>
+      },
+      {
+        path:"/food/:id",
+        element: <FoodDetails/>,
+        loader: ({params}) => fetch(`https://hunger-relief-server.vercel.app/api/v1/food/${params.id}`)
       },
       {
         path:"/login",

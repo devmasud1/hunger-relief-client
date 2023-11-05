@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const FeaturedCard = ({ food }) => {
   const {
@@ -38,7 +39,11 @@ const FeaturedCard = ({ food }) => {
               <div className="w-1/2 lg:w-1/2">
                 <p>{pickup_location.address}</p>
                 <p>{pickup_location.hometown}</p>
-                <button className="btn btn-info mt-5 rounded-tl-2xl rounded-br-2xl">View Details</button>
+                <Link to={`/food/${food._id}`}>
+                  <button className="btn btn-info mt-5 rounded-tl-2xl rounded-br-2xl">
+                    View Details
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

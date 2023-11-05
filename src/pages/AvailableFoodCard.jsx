@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AvailableFoodCard = ({ food }) => {
   const {
     food_image,
@@ -8,13 +10,16 @@ const AvailableFoodCard = ({ food }) => {
     expired_date,
     additional_notes,
   } = food || {};
-  console.log(pickup_location)
 
   return (
     <div className="card lg:flex-col lg:card-side bg-base-100 shadow-xl">
       <div className="w-full">
         <figure>
-          <img src={food_image} alt="food_image" className="w-full h-[300px] object-cover" />
+          <img
+            src={food_image}
+            alt="food_image"
+            className="w-full h-[300px] object-cover"
+          />
         </figure>
       </div>
       <div className="w-full">
@@ -38,9 +43,11 @@ const AvailableFoodCard = ({ food }) => {
               <div className="w-1/2">
                 <h1 className="text-lg font-medium">Pickup location:</h1>
                 <h2 className="text-sm">{pickup_location.address}</h2>
-           
+
                 <div className="card-actions justify-end mt-5">
-                  <button className="btn btn-primary">View Details</button>
+                  <Link to={`/food/${food._id}`}>
+                    <button className="btn btn-primary">View Details</button>
+                  </Link>
                 </div>
               </div>
             </div>
