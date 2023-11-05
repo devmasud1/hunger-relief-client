@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom";
+import FoodDetailsModal from "./FoodDetailsModal";
 
 const FoodDetails = () => {
   const food = useLoaderData();
@@ -9,7 +10,7 @@ const FoodDetails = () => {
         <div className="flex gap-4 items-center px-10">
           <div className="avatar">
             <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src={food.donator.donator_image} alt="donator_image"/>
+              <img src={food.donator.donator_image} alt="donator_image" />
             </div>
           </div>
           <div>
@@ -29,7 +30,15 @@ const FoodDetails = () => {
           <p>Quality: {food.food_quantity}</p>
           <p>Expired Date: {food.expired_date}</p>
           <div className="card-actions">
-            <button className="btn btn-primary">Request</button>
+            <button
+              className="btn btn-info"
+              onClick={() => document.getElementById("my_modal_3").showModal()}
+            >
+              Request
+            </button>
+          </div>
+          <div>
+            <FoodDetailsModal food={food}/>
           </div>
         </div>
       </div>
