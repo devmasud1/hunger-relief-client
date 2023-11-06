@@ -9,6 +9,8 @@ const FeaturedCard = ({ food }) => {
     pickup_location,
     expired_date,
     additional_notes,
+    donator_image,
+    donar_name
   } = food || {};
 
   return (
@@ -29,16 +31,19 @@ const FeaturedCard = ({ food }) => {
               <div className="w-1/2 lg:w-1/2">
                 <div className="avatar">
                   <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={donator.donator_image} className="object-cover" />
+                    <img
+                      src={donator?.donator_image || donator_image}
+                      className="object-cover"
+                    />
                   </div>
                 </div>
                 <h2 className="text-lg font-medium mt-3">
-                  {donator.donator_name}
+                  {donator?.donator_name || donar_name}
                 </h2>
               </div>
               <div className="w-1/2 lg:w-1/2">
-                <p>{pickup_location.address}</p>
-                <p>{pickup_location.hometown}</p>
+                <p>{pickup_location?.address || pickup_location}</p>
+                <p>{pickup_location?.hometown}</p>
                 <Link to={`/food/${food._id}`}>
                   <button className="btn btn-info mt-5 rounded-tl-2xl rounded-br-2xl">
                     View Details

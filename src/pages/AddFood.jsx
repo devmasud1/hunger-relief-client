@@ -41,8 +41,6 @@ const AddFood = () => {
       food_status,
     };
 
-  
-
     axiosUrl
       .post("/api/v1/food", addFood)
       .then((res) => {
