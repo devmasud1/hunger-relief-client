@@ -1,4 +1,6 @@
-const FoodRequestTable = (data, handleRequestDelete, handleRequestConfirm) => {
+
+
+const FoodRequestTable = ({ data, handleRequestDelete, handleRequestConfirm }) => {
   const {
     _id,
     donar_name,
@@ -6,8 +8,8 @@ const FoodRequestTable = (data, handleRequestDelete, handleRequestConfirm) => {
     pickup_location,
     expired_date,
     donation_money,
-    status 
-  } = data.data || {};
+    status,
+  } = data || {};
 
   return (
     <tr>
