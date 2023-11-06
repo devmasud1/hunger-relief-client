@@ -7,33 +7,50 @@ import "react-toastify/dist/ReactToastify.css";
 
 const FoodRequest = () => {
   const [foodRequest, setFoodRequest] = useState([]);
-  console.log(foodRequest);
   const { user } = useContext(AuthContext);
   const axiosUrl = UseAxios();
 
   const url = `/api/v1/food-request?email=${user?.email}`;
-
   useEffect(() => {
     axiosUrl.get(url).then((data) => setFoodRequest(data.data));
   }, [axiosUrl, url]);
 
   const deleteUrl = "/api/v1/food-request";
-  const handleRequestDelete = (id) => {
+  const handleRequestDelete = (id, status) => {
+    if (status === "available") {
+      axiosUrl
+        .delete(`${deleteUrl}/${id}`)
+        .then((res) => {
+          if (res.data.deletedCount > 0) {
+            const remaining = foodRequest.filter((item) => item._id !== id);
+            setFoodRequest(remaining);
+            toast("Your request has been removed", { type: "success" });
+          }
+        })
+        .catch(() => {
+          toast("Error:", { type: "error" });
+        });
+    } else {
+      toast("This item already delivered", { type: "error" });
+    }
+  };
+  
+
+  const updateUrl = "/api/v1/food-request";
+  const handleRequestConfirm = (id) => {
     axiosUrl
-      .delete(`${deleteUrl}/${id}`)
-      .then((response) => {
-        if (response.data.deletedCount > 0) {
-          const remaining = foodRequest.filter((booking) => booking._id !== id);
-          setFoodRequest(remaining);
-          toast("Your request has been remove", { type: "success" });
+      .patch(`${updateUrl}/${id}`, { status: "delivered" })
+      .then((data) => {
+        if (data.data.modifiedCount > 0) {
+          const remaining = foodRequest.filter((item) => item._id !== id);
+          const updated = foodRequest.find((item) => item._id === id);
+          updated.status = "delivered";
+          const newRequest = [updated, ...remaining];
+          setFoodRequest(newRequest);
+          toast("status update", { type: "success" });
         }
-      })
-      .catch(() => {
-        toast("Error:", { type: "error" });
       });
   };
-
-  const handleRequestConfirm = () => {};
 
   return (
     <div className="w-11/12 mx-auto min-h-[70vh] my-10">
