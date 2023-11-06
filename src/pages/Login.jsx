@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
@@ -7,11 +7,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { GoogleLogIn, signInUser } = useContext(AuthContext);
+  const location = useLocation();
+  const goTo = useNavigate();
 
   const handleGoogleLogIn = () => {
     GoogleLogIn()
       .then(() => {
         toast("log in success", { type: "success" });
+        goTo(location?.state ? location?.state : "/");
       })
       .catch(() => {
         toast("something wrong", { type: "error" });
@@ -27,6 +30,7 @@ const Login = () => {
     signInUser(email, password)
       .then(() => {
         toast("log in success", { type: "success" });
+        goTo(location?.state ? location?.state : "/");
       })
       .catch(() => {
         toast("something wrong", { type: "error" });

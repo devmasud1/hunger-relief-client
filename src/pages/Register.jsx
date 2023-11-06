@@ -1,37 +1,34 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser, passwordErrMsg } = useContext(AuthContext);
+  const location = useLocation();
+  const goTo = useNavigate();
+
   const handleUserRegister = (e) => {
     e.preventDefault();
 
-    
     const email = e.target.email.value;
     const password = e.target.password.value;
     const name = e.target.name.value;
     const imageUrl = e.target.imageUrl.value;
 
     createUser(email, password, name, imageUrl)
-    .then(() => {
-        toast("log in success", { type: "success" });
+      .then(() => {
+        toast("User successfully created!", { type: "success" });
+        goTo(location?.state ? location?.state : "/");
       })
       .catch(() => {
-        toast("something wrong", { type: "error" });
+        toast("Already use this email!", { type: "error" });
       });
-    //   .then(() => {
-    //     toast("User successfully created!", { type: "success" })
-    //   })
-    //   .catch(() => {
-    //     toast("Already use this email", { type: "error" })
-    //   })
 
-    // e.target.name.value = "";
-    // e.target.email.value = "";
-    // e.target.password.value = "";
+    e.target.name.value = "";
+    e.target.email.value = "";
+    e.target.password.value = "";
   };
   return (
     <div>
@@ -94,7 +91,7 @@ const Register = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-white text-lg">
-                  imageUrl
+                    imageUrl
                   </span>
                 </label>
                 <input
