@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AvailableFoodCard from "./AvailableFoodCard";
 import UseAxios from "../hooks/UseAxios/UseAxios";
+import LoadingSpinner from "./LoadingSpinner";
 
 const AvailableFood = () => {
   const [availableFood, setAvailableFood] = useState([]);
@@ -97,16 +98,21 @@ const AvailableFood = () => {
             By Expire Date
           </button>
         </div>
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 ">
-          {(searchQuery !== ""
-            ? filteredFood
-            : sortedFood.length > 0
-            ? sortedFood
-            : availableFood
-          ).map((food, idx) => (
-            <AvailableFoodCard key={idx} food={food}></AvailableFoodCard>
-          ))}
-        </div>
+
+        {availableFood.length > 0 ? (
+          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 ">
+            {(searchQuery !== ""
+              ? filteredFood
+              : sortedFood.length > 0
+              ? sortedFood
+              : availableFood
+            ).map((food, idx) => (
+              <AvailableFoodCard key={idx} food={food}></AvailableFoodCard>
+            ))}
+          </div>
+        ) : (
+          <LoadingSpinner />
+        )}
       </div>
     </div>
   );
