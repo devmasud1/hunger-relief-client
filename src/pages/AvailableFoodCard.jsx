@@ -46,7 +46,7 @@ const AvailableFoodCard = ({ food }) => {
 
                 <div className="card-actions justify-end mt-5">
                   <Link to={`/food/${food._id}`}>
-                    <button className="btn btn-primary">View Details</button>
+                    <button className="btn btn-neutral">View Details</button>
                   </Link>
                 </div>
               </div>

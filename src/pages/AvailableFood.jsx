@@ -4,6 +4,10 @@ import UseAxios from "../hooks/UseAxios/UseAxios";
 
 const AvailableFood = () => {
   const [availableFood, setAvailableFood] = useState([]);
+  const [sortingOrder, setSortingOrder] = useState("asc");
+  const [sortedFood, setSortedFood] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredFood, setFilteredFood] = useState([]);
   const axiosUrl = UseAxios();
 
   useEffect(() => {
@@ -17,7 +21,37 @@ const AvailableFood = () => {
 
     const foodName = e.target.food.value;
 
-    console.log(foodName);
+    setSearchQuery(foodName);
+
+    e.target.food.value = "";
+  };
+
+  useEffect(() => {
+    const filteredFoodData = availableFood.filter((food) =>
+      food.food_name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    setFilteredFood(filteredFoodData);
+  }, [availableFood, searchQuery]);
+
+  const handleSortByExpirationDate = () => {
+    const foodCopy = [...availableFood];
+
+    foodCopy.sort((a, b) => {
+      const dateA = new Date(a.expired_date);
+      const dateB = new Date(b.expired_date);
+
+      if (sortingOrder === "asc") {
+        return dateA - dateB;
+      } else {
+        return dateB - dateA;
+      }
+    });
+
+    const newSortingOrder = sortingOrder === "asc" ? "desc" : "asc";
+
+    setSortingOrder(newSortingOrder);
+    setSortedFood(foodCopy);
   };
 
   return (
@@ -54,11 +88,22 @@ const AvailableFood = () => {
       </div>
 
       <div className="w-11/12 mx-auto">
-        <div className="card-actions justify-end pt-6">
-          <button className="btn btn-accent">sort by date</button>
+        <div className="card-actions flex-col justify-end pt-6">
+          <label className="text-xl font-semibold">Sort The Food :</label>
+          <button
+            className="btn btn-accent px-8"
+            onClick={handleSortByExpirationDate}
+          >
+            By Expire Date
+          </button>
         </div>
-        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 lg:my-14">
-          {availableFood?.map((food, idx) => (
+        <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 ">
+          {(searchQuery !== ""
+            ? filteredFood
+            : sortedFood.length > 0
+            ? sortedFood
+            : availableFood
+          ).map((food, idx) => (
             <AvailableFoodCard key={idx} food={food}></AvailableFoodCard>
           ))}
         </div>

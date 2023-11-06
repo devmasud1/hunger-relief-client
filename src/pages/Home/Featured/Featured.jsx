@@ -11,7 +11,8 @@ const Featured = () => {
     axiosUrl
       .get("/api/v1/foods")
       .then((data) => {
-        setFeaturedFood(data.data);
+        const sortedData = data.data.sort((a, b) => b.food_quantity - a.food_quantity);
+        setFeaturedFood(sortedData);
       });
   }, [axiosUrl]);
 
