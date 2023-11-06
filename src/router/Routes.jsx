@@ -8,44 +8,49 @@ import AddFood from "../pages/AddFood";
 import ManageFood from "../pages/ManageFood";
 import FoodRequest from "../pages/FoodRequest";
 import FoodDetails from "../pages/FoodDetails";
+import ErrorPage from "../pages/ErrorPage";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path:"/available-food",
-        element: <AvailableFood/>
+        path: "/available-food",
+        element: <AvailableFood />,
       },
       {
-        path:"/add-food",
-        element: <AddFood/>
+        path: "/add-food",
+        element: <AddFood />,
       },
       {
-        path:"/manage-foods",
-        element: <ManageFood/>
+        path: "/manage-foods",
+        element: <ManageFood />,
       },
       {
-        path:"/food-request",
-        element: <FoodRequest/>
+        path: "/food-request",
+        element: <FoodRequest />,
       },
       {
-        path:"/food/:id",
-        element: <FoodDetails/>,
-        loader: ({params}) => fetch(`https://hunger-relief-server.vercel.app/api/v1/food/${params.id}`)
+        path: "/food/:id",
+        element: <FoodDetails />,
+        loader: ({ params }) =>
+          fetch(
+            `https://hunger-relief-server.vercel.app/api/v1/food/${params.id}`
+          ),
       },
       {
-        path:"/login",
-        element: <Login/>
+        path: "/login",
+        element: <Login />,
       },
       {
-        path:"/register",
-        element: <Register/>
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
