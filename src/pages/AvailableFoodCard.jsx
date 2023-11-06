@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 
 const AvailableFoodCard = ({ food }) => {
+  console.log(food)
   const {
+    
     food_image,
     food_name,
     donator,
@@ -9,6 +11,8 @@ const AvailableFoodCard = ({ food }) => {
     pickup_location,
     expired_date,
     additional_notes,
+    donar_name,
+    donator_image
   } = food || {};
 
   return (
@@ -33,16 +37,16 @@ const AvailableFoodCard = ({ food }) => {
               <div className="w-1/2">
                 <div className="avatar">
                   <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={donator.donator_image} className="object-cover" />
+                    <img src={donator?.donator_image || donator_image} className="object-cover" />
                   </div>
                 </div>
                 <h2 className="text-base lg:text-lg font-medium mt-3">
-                  {donator.donator_name}
+                  {donator?.donator_name || donar_name}
                 </h2>
               </div>
               <div className="w-1/2">
                 <h1 className="text-lg font-medium">Pickup location:</h1>
-                <h2 className="text-sm">{pickup_location.address}</h2>
+                <h2 className="text-sm">{pickup_location?.address || pickup_location}</h2>
 
                 <div className="card-actions justify-end mt-5">
                   <Link to={`/food/${food._id}`}>
@@ -58,3 +62,4 @@ const AvailableFoodCard = ({ food }) => {
   );
 };
 export default AvailableFoodCard;
+

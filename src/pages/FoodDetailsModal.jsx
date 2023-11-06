@@ -55,8 +55,7 @@ const FoodDetailsModal = ({ food }) => {
 
     axiosUrl.post("/api/v1/food-request", foodRequest).then((res) => {
       if (res.data.insertedId) {
-        toast("successfully request sent", { type: "success" });
-       
+        toast("successfully request sent", { type: "success" });     
       }
     });
   };
