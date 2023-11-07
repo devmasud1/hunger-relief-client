@@ -15,9 +15,9 @@ const FeaturedCard = ({ food }) => {
 
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl">
-      <div className="lg:w-1/2">
+      <div className="lg:w-1/2 w-full lg:h-full">
         <figure>
-          <img src={food_image} alt="food_image" />
+          <img src={food_image} alt="food_image" className="w-full lg:h-[350px] object-cover"/>
         </figure>
       </div>
       <div className="w-full lg:w-1/2">

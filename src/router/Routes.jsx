@@ -10,6 +10,7 @@ import FoodRequest from "../pages/FoodRequest";
 import FoodDetails from "../pages/FoodDetails";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoutes from "./PrivateRoutes";
+import ManageFoodUpdateData from "../pages/ManageFoodUpdateData";
 
 const Routes = createBrowserRouter([
   {
@@ -52,7 +53,23 @@ const Routes = createBrowserRouter([
       },
       {
         path: "/food/:id",
-        element: <FoodDetails />,
+        element: (
+          <PrivateRoutes>
+            <FoodDetails />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://hunger-relief-server.vercel.app/api/v1/food/${params.id}`
+          ),
+      },
+      {
+        path: "/food-update/:id",
+        element: (
+          <PrivateRoutes>
+            <ManageFoodUpdateData />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://hunger-relief-server.vercel.app/api/v1/food/${params.id}`

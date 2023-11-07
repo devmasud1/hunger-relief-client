@@ -136,7 +136,7 @@ const FoodDetailsModal = ({ food }) => {
                       type="text"
                       name="donar_name"
                       readOnly
-                      defaultValue={food.donator.donator_name}
+                      defaultValue={food?.donar_name ||food?.donator.donator_name}
                       className="input input-bordered"
                       required
                     />
@@ -178,7 +178,7 @@ const FoodDetailsModal = ({ food }) => {
                       type="text"
                       name="pickup_location"
                       readOnly
-                      defaultValue={food.pickup_location.address}
+                      defaultValue={food?.pickup_location.address || food?.pickup_location}
                       className="input input-bordered"
                       required
                     />

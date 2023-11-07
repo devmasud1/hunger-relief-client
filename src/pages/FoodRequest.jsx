@@ -4,6 +4,7 @@ import { AuthContext } from "./../hooks/Provider/AuthProvider";
 import FoodRequestTable from "./FoodRequestTable";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoadingSpinner from "./LoadingSpinner";
 
 const FoodRequest = () => {
   const [foodRequest, setFoodRequest] = useState([]);
@@ -34,7 +35,6 @@ const FoodRequest = () => {
       toast("This item already delivered", { type: "error" });
     }
   };
-  
 
   const updateUrl = "/api/v1/food-request";
   const handleRequestConfirm = (id) => {
@@ -57,29 +57,33 @@ const FoodRequest = () => {
       <ToastContainer />
       <h2 className="text-3xl">Your request: {foodRequest.length}</h2>
       <div className="overflow-x-auto w-full">
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>Donar Name</th>
-              <th>Pickup Location</th>
-              <th>Expire Date</th>
-              <th>Request Date</th>
-              <th>Your Donation Amount</th>
-              <th>Status</th>
-              <th>Cancel</th>
-            </tr>
-          </thead>
-          <tbody>
-            {foodRequest?.map((data) => (
-              <FoodRequestTable
-                key={data._id}
-                data={data}
-                handleRequestDelete={handleRequestDelete}
-                handleRequestConfirm={handleRequestConfirm}
-              ></FoodRequestTable>
-            ))}
-          </tbody>
-        </table>
+        {foodRequest.length > 0 ? (
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Donar Name</th>
+                <th>Pickup Location</th>
+                <th>Expire Date</th>
+                <th>Request Date</th>
+                <th>Your Donation Amount</th>
+                <th>Status</th>
+                <th>Cancel</th>
+              </tr>
+            </thead>
+            <tbody>
+              {foodRequest?.map((data) => (
+                <FoodRequestTable
+                  key={data._id}
+                  data={data}
+                  handleRequestDelete={handleRequestDelete}
+                  handleRequestConfirm={handleRequestConfirm}
+                ></FoodRequestTable>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <LoadingSpinner />
+        )}
       </div>
     </div>
   );

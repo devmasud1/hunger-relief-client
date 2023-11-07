@@ -6,11 +6,12 @@ import LoadingSpinner from "./LoadingSpinner";
 const FoodDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const food = useLoaderData();
+  console.log(food);
 
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 300);
+    }, 200);
   }, []);
 
   return (
@@ -22,12 +23,15 @@ const FoodDetails = () => {
           <div className="flex flex-col sm:flex-row gap-4 items-center px-4 sm:px-10">
             <div className="avatar">
               <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src={food.donator.donator_image} alt="donator_image" />
+                <img src={food.donator_image || food.donator.donator_image} alt="donator_image" />
               </div>
             </div>
             <div>
-              <h2>Donar: {food.donator.donator_name} </h2>
-              <p>Pickup Location: {food.pickup_location.address}</p>
+              <h2><strong>Donar:</strong> {food?.donar_name || food?.donator.donator_name} </h2>
+              <p>
+                <strong>Pickup Location:</strong>{" "}
+                {food?.pickup_location.address || food.pickup_location}
+              </p>
             </div>
           </div>
           <figure className="px-4 sm:px-10 pt-4 sm:pt-10">

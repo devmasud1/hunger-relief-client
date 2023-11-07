@@ -1,17 +1,7 @@
 import { Link } from "react-router-dom";
 
 const AvailableFoodCard = ({ food }) => {
-  // const {
-  //   food_image,
-  //   food_name,
-  //   donator,
-  //   food_quantity,
-  //   pickup_location,
-  //   expired_date,
-  //   additional_notes,
-  //   donar_name,
-  //   donator_image,
-  // } = food || {};
+
   const {
     food_image,
     food_name,
@@ -23,9 +13,6 @@ const AvailableFoodCard = ({ food }) => {
     donar_name,
     donator_image,
 } = food || {};
-
-
-  console.log(food)
 
   return (
     <div className="card lg:flex-col lg:card-side bg-base-100 shadow-xl">

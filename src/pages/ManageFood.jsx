@@ -4,9 +4,13 @@ import { AuthContext } from "../hooks/Provider/AuthProvider";
 import * as React from "react";
 import { useTable } from "react-table";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+import LoadingSpinner from "./LoadingSpinner";
 
 const ManageFood = () => {
   const [manageFood, setManageFood] = useState([]);
+
+
   const { user } = useContext(AuthContext);
   const axiosUrl = UseAxios();
   const url = `/api/v1/food?email=${user?.email}`;
@@ -14,10 +18,6 @@ const ManageFood = () => {
   useEffect(() => {
     axiosUrl.get(url).then((data) => setManageFood(data.data));
   }, [axiosUrl, url]);
-
-  const handleEdit = () => {
-    console.log("Edit clicked for:");
-  };
 
   const deleteUrl = "/api/v1/food";
   const handleDelete = (id) => {
@@ -69,7 +69,7 @@ const ManageFood = () => {
         Header: "Edit",
         accessor: "edit",
         Cell: ({ row }) => (
-          <button onClick={() => handleEdit(row?.original?._id)}>Edit</button>
+          <Link to={`/food-update/${row?.original?._id}`}>Edit</Link>
         ),
       },
       {
@@ -144,11 +144,10 @@ const ManageFood = () => {
         </div>
       ) : (
         <div>
-          <p className="m-auto text-xl lg:text-2xl text-center">
-            You are not added any food yet
-          </p>
+          <LoadingSpinner/>
         </div>
       )}
+
     </div>
   );
 };
