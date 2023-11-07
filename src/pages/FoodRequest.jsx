@@ -36,21 +36,7 @@ const FoodRequest = () => {
     }
   };
 
-  const updateUrl = "/api/v1/food-request";
-  const handleRequestConfirm = (id) => {
-    axiosUrl
-      .patch(`${updateUrl}/${id}`, { status: "delivered" })
-      .then((data) => {
-        if (data.data.modifiedCount > 0) {
-          const remaining = foodRequest.filter((item) => item._id !== id);
-          const updated = foodRequest.find((item) => item._id === id);
-          updated.status = "delivered";
-          const newRequest = [updated, ...remaining];
-          setFoodRequest(newRequest);
-          toast("status update", { type: "success" });
-        }
-      });
-  };
+
 
   return (
     <div className="w-11/12 mx-auto min-h-[70vh] my-10">
@@ -76,7 +62,7 @@ const FoodRequest = () => {
                   key={data._id}
                   data={data}
                   handleRequestDelete={handleRequestDelete}
-                  handleRequestConfirm={handleRequestConfirm}
+                 
                 ></FoodRequestTable>
               ))}
             </tbody>

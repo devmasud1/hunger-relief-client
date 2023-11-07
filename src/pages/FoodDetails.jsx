@@ -6,7 +6,6 @@ import LoadingSpinner from "./LoadingSpinner";
 const FoodDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const food = useLoaderData();
-  console.log(food);
 
   useEffect(() => {
     setTimeout(() => {

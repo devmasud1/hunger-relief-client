@@ -81,6 +81,13 @@ const ManageFood = () => {
           </button>
         ),
       },
+      {
+        Header: "Manage",
+        accessor: "manage",
+        Cell: ({ row }) => (
+          <Link to={`/manage/${row?.original?.donar_name}`}>manage</Link>
+        ),
+      },
     ],
     []
   );

@@ -1,6 +1,4 @@
-
-
-const FoodRequestTable = ({ data, handleRequestDelete, handleRequestConfirm }) => {
+const FoodRequestTable = ({ data, handleRequestDelete }) => {
   const {
     _id,
     donar_name,
@@ -10,7 +8,6 @@ const FoodRequestTable = ({ data, handleRequestDelete, handleRequestConfirm }) =
     donation_money,
     status,
   } = data || {};
-
 
   return (
     <tr>
@@ -23,12 +20,7 @@ const FoodRequestTable = ({ data, handleRequestDelete, handleRequestConfirm }) =
         {status === "delivered" ? (
           <button className="btn btn-success btn-sm">delivered</button>
         ) : (
-          <button
-            onClick={() => handleRequestConfirm(_id)}
-            className="btn btn-warning btn-sm"
-          >
-            available
-          </button>
+          <button className="btn btn-warning btn-sm">available</button>
         )}
       </th>
 

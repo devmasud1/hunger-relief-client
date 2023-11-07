@@ -99,20 +99,22 @@ const AvailableFood = () => {
           </button>
         </div>
 
-        {availableFood.length > 0 ? (
-          <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 ">
-            {(searchQuery !== ""
-              ? filteredFood
-              : sortedFood.length > 0
-              ? sortedFood
-              : availableFood
-            ).map((food, idx) => (
-              <AvailableFoodCard key={idx} food={food}></AvailableFoodCard>
-            ))}
-          </div>
-        ) : (
-          <LoadingSpinner />
-        )}
+        <div className="min-h-[30vh]">
+          {availableFood.length > 0 ? (
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 my-10 ">
+              {(searchQuery !== ""
+                ? filteredFood
+                : sortedFood.length > 0
+                ? sortedFood
+                : availableFood
+              ).map((food, idx) => (
+                <AvailableFoodCard key={idx} food={food}></AvailableFoodCard>
+              ))}
+            </div>
+          ) : (
+            <LoadingSpinner />
+          )}
+        </div>
       </div>
     </div>
   );

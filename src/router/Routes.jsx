@@ -11,6 +11,7 @@ import FoodDetails from "../pages/FoodDetails";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoutes from "./PrivateRoutes";
 import ManageFoodUpdateData from "../pages/ManageFoodUpdateData";
+import ManageSingleFood from "../pages/ManageSingleFood";
 
 const Routes = createBrowserRouter([
   {
@@ -74,6 +75,14 @@ const Routes = createBrowserRouter([
           fetch(
             `https://hunger-relief-server.vercel.app/api/v1/food/${params.id}`
           ),
+      },
+      {
+        path: "/manage/:id",
+        element: (
+          <PrivateRoutes>
+            <ManageSingleFood />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
