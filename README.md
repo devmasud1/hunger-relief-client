@@ -1,8 +1,13 @@
-# React + Vite
+## Hunger Relief
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Live site](https://hunger-relief0.web.app/)
 
-Currently, two official plugins are available:
+### Project Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Users will be able to create an account on the user registration page.
+- Users will be able to create an account on the user registration page.
+- They can log in using their Google account.
+- Logged-in users can add food by going to the "Add Food" page.
+- On the "Manage My Food" page, users can update or delete information about the food they have added.
+- Users can request any food, and it will be displayed on the "My Food Request" page.
+
