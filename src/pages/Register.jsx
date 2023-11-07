@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser, passwordErrMsg } = useContext(AuthContext);
@@ -32,6 +33,9 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>HR | Register</title>
+      </Helmet>
       <ToastContainer />
       <div
         className="hero min-h-[68vh]"

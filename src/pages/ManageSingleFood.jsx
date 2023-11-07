@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
 import UseAxios from "../hooks/UseAxios/UseAxios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,9 +41,19 @@ const ManageSingleFood = () => {
       });
   };
 
+  const goTo = useNavigate();
+  const prePage = () => {
+    goTo("/manage-foods");
+  };
+
   return (
-    <div className="w-11/12 mx-auto min-h-[40vh] my-12">
+    <div className="w-11/12 mx-auto min-h-[60vh] my-12 lg:16">
       <ToastContainer />
+      <div className=" mb-5">
+        <button className="btn btn-neutral" onClick={prePage}>
+          back to previous page
+        </button>
+      </div>
       <div className="overflow-x-auto w-full">
         {manageFood.length > 0 ? (
           <table className="table w-full">

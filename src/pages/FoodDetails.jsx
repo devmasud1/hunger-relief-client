@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import FoodDetailsModal from "./FoodDetailsModal";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "./LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,9 @@ const FoodDetails = () => {
 
   return (
     <div className="w-full sm:w-11/12 mx-auto my-10 lg:my-14">
+      <Helmet>
+        <title>HR | Food Details</title>
+      </Helmet>
       {isLoading ? (
         <LoadingSpinner />
       ) : (

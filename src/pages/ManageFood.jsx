@@ -6,6 +6,7 @@ import { useTable } from "react-table";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "./LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const ManageFood = () => {
   const [manageFood, setManageFood] = useState([]);
@@ -100,6 +101,9 @@ const ManageFood = () => {
 
   return (
     <div className="w-11/12 mx-auto my-12 lg:my-20 min-h-[60vh]">
+      <Helmet>
+        <title>HR | Manage Food</title>
+      </Helmet>
       {manageFood.length > 0 ? (
         <div>
           <h1 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-6 md:mb-8 lg:mb-10">

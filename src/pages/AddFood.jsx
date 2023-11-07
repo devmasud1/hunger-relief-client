@@ -3,6 +3,7 @@ import { AuthContext } from "./../hooks/Provider/AuthProvider";
 import UseAxios from "../hooks/UseAxios/UseAxios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -53,6 +54,9 @@ const AddFood = () => {
 
   return (
     <div className="w-11/12 mx-auto p-6 my-10">
+      <Helmet>
+        <title>HR | Add Food</title>
+      </Helmet>
       <ToastContainer />
       <h1 className="text-3xl font-semibold my-4 text-center">
         Add A Single Food

@@ -55,7 +55,7 @@ const ManageFoodUpdateData = () => {
     <div className="w-11/12 mx-auto my-10 lg:my-16">
       <ToastContainer />
       <div className="w-3/4 mx-auto mb-5">
-        <button className="btn btn-info" onClick={prePage}>
+        <button className="btn btn-primary" onClick={prePage}>
           back to previous page
         </button>
       </div>

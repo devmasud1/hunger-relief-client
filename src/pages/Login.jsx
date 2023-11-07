@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../hooks/Provider/AuthProvider";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { GoogleLogIn, signInUser } = useContext(AuthContext);
@@ -41,6 +42,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>HR | log in</title>
+      </Helmet>
       <ToastContainer />
       <div
         className="hero min-h-[68vh]"

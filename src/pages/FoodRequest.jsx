@@ -5,6 +5,7 @@ import FoodRequestTable from "./FoodRequestTable";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingSpinner from "./LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const FoodRequest = () => {
   const [foodRequest, setFoodRequest] = useState([]);
@@ -40,6 +41,9 @@ const FoodRequest = () => {
 
   return (
     <div className="w-11/12 mx-auto min-h-[70vh] my-10">
+      <Helmet>
+        <title>HR | Food Request</title>
+      </Helmet>
       <ToastContainer />
       <h2 className="text-3xl">Your request: {foodRequest.length}</h2>
       <div className="overflow-x-auto w-full">

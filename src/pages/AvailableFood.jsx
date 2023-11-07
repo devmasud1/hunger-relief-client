@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import AvailableFoodCard from "./AvailableFoodCard";
 import UseAxios from "../hooks/UseAxios/UseAxios";
 import LoadingSpinner from "./LoadingSpinner";
+import { Helmet } from "react-helmet";
 
 const AvailableFood = () => {
   const [availableFood, setAvailableFood] = useState([]);
@@ -56,7 +57,11 @@ const AvailableFood = () => {
   };
 
   return (
+    
     <div>
+      <Helmet>
+        <title>HR | Available Food</title>
+      </Helmet>
       <div
         className="hero h-[30vh]"
         style={{
