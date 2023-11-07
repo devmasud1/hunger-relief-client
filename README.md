@@ -5,7 +5,6 @@
 ### Project Features
 
 - Users will be able to create an account on the user registration page.
-- Users will be able to create an account on the user registration page.
 - They can log in using their Google account.
 - Logged-in users can add food by going to the "Add Food" page.
 - On the "Manage My Food" page, users can update or delete information about the food they have added.
