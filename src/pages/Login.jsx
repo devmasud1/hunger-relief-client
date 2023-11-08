@@ -52,7 +52,7 @@ const Login = () => {
       >
         <div className="hero-overlay bg-opacity-95"></div>
         <div className="hero-content">
-          <div className="w-full border-2 border-blue-200">
+          <div className="w-11/12 mx-auto lg:border-2 border-blue-200">
             <h1 className="text-center mt-5 text-white text-xl font-semibold">
               Log in
             </h1>
