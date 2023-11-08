@@ -58,7 +58,7 @@ const AvailableFood = () => {
 
   return (
     
-    <div>
+    <div >
       <Helmet>
         <title>HR | Available Food</title>
       </Helmet>
@@ -71,7 +71,7 @@ const AvailableFood = () => {
         <div className="hero-overlay bg-opacity-80"></div>
         <div className="hero-content text-center text-neutral-content">
           <div>
-            <form onSubmit={handleSearch} className="flex items-center">
+            <form  onSubmit={handleSearch} className="w-3/4 flex flex-col lg:flex-row  items-center gap-3 mx-auto">
               <div className="form-control">
                 <input
                   type="text"

@@ -15,7 +15,9 @@ const FoodRequest = () => {
   const url = `/api/v1/food-request?email=${user?.email}`;
   useEffect(() => {
     axiosUrl.get(url).then((data) => setFoodRequest(data.data));
+
   }, [axiosUrl, url]);
+
 
   const deleteUrl = "/api/v1/food-request";
   const handleRequestDelete = (id, status) => {
@@ -36,8 +38,6 @@ const FoodRequest = () => {
       toast("This item already delivered", { type: "error" });
     }
   };
-
-
 
   return (
     <div className="w-11/12 mx-auto min-h-[70vh] my-10">
@@ -66,7 +66,6 @@ const FoodRequest = () => {
                   key={data._id}
                   data={data}
                   handleRequestDelete={handleRequestDelete}
-                 
                 ></FoodRequestTable>
               ))}
             </tbody>
