@@ -71,7 +71,7 @@ const FoodRequest = () => {
             </tbody>
           </table>
         ) : (
-          <LoadingSpinner />
+          <p className="text-center">No data found!</p>
         )}
       </div>
     </div>

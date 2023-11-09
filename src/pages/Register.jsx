@@ -44,8 +44,8 @@ const Register = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-95"></div>
-        <div className="hero-content">
-          <div className="w-11/12 mx-auto lg:border-2 border-blue-200">
+        <div className="hero-content w-11/12 mx-auto">
+          <div className="lg:border-2 border-blue-200">
             <h1 className="text-center mt-5 text-white text-xl font-semibold">
               Sign up now
             </h1>

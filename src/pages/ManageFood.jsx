@@ -5,19 +5,16 @@ import * as React from "react";
 import { useTable } from "react-table";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import LoadingSpinner from "./LoadingSpinner";
 import { Helmet } from "react-helmet";
 
 const ManageFood = () => {
   const [manageFood, setManageFood] = useState([]);
-
-
   const { user } = useContext(AuthContext);
   const axiosUrl = UseAxios();
-  const url = `/api/v1/food?email=${user?.email}`;
 
+  const url = `/api/v1/food?email=${user?.email}`;
   useEffect(() => {
-    axiosUrl.get(url).then((data) => setManageFood(data.data));
+    axiosUrl.get(url).then((data) => setManageFood(data?.data));
   }, [axiosUrl, url]);
 
   const deleteUrl = "/api/v1/food";
@@ -155,7 +152,7 @@ const ManageFood = () => {
         </div>
       ) : (
         <div>
-          <LoadingSpinner/>
+          <p className="text-center">You are not add any food yet!</p>
         </div>
       )}
 
